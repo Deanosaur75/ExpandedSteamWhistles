@@ -1,8 +1,8 @@
-package net.deano.expandedsteamwhistles.event;
-
-import net.deano.expandedsteamwhistles.ExpandedSteamWhistles;
-import net.deano.expandedsteamwhistles.init.AllBlockEntities;
-import net.deano.expandedsteamwhistles.whistle.ExpandedSteamWhistleRenderer;
+package net.deano.expanded_steam_whistles.event;
+/*
+import net.deano.expanded_steam_whistles.ExpandedSteamWhistles;
+import net.deano.expanded_steam_whistles.init.AllBlockEntities;
+import net.deano.expanded_steam_whistles.whistle.ExpandedSteamWhistleRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -16,3 +16,4 @@ public class ModEventBusClientEvents {
         event.registerBlockEntityRenderer(AllBlockEntities.EXPANDED_STEAM_WHISTLE_BLOCK_ENTITY.get(), ExpandedSteamWhistleRenderer::new);
     }
 }
+*/

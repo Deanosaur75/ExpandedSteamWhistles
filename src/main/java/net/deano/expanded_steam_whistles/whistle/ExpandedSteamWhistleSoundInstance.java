@@ -1,4 +1,4 @@
-package net.deano.expandedsteamwhistles.whistle;
+package net.deano.expanded_steam_whistles.whistle;
 
 public class ExpandedSteamWhistleSoundInstance {
 }

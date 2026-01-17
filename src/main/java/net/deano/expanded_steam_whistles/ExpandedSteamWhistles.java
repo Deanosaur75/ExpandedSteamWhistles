@@ -1,6 +1,9 @@
-package net.deano.expandedsteamwhistles;
+package net.deano.expanded_steam_whistles;
 
 import com.mojang.logging.LogUtils;
+import net.deano.expanded_steam_whistles.init.AllCreativeModeTabs;
+import net.deano.expanded_steam_whistles.init.AllItems;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -27,13 +30,12 @@ public class ExpandedSteamWhistles
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        // Register the commonSetup method for modloading
+        AllCreativeModeTabs.register(modEventBus);
+
+        AllItems.register(modEventBus);
+
         modEventBus.addListener(this::commonSetup);
-
-        // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
-
-        // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
     }
 
@@ -43,9 +45,12 @@ public class ExpandedSteamWhistles
     }
 
     // Add the example block item to the building blocks tab
-    private void addCreative(BuildCreativeModeTabContentsEvent event)
-    {
-
+    private void addCreative(BuildCreativeModeTabContentsEvent event) {
+        /*
+        if(event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS) {
+            event.accept(AllItems.WHISTLE);
+        }
+*/
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
