@@ -1,6 +1,7 @@
 package net.deano.expanded_steam_whistles;
 
 import com.mojang.logging.LogUtils;
+import net.deano.expanded_steam_whistles.init.AllBlocks;
 import net.deano.expanded_steam_whistles.init.AllCreativeModeTabs;
 import net.deano.expanded_steam_whistles.init.AllItems;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -33,6 +34,7 @@ public class ExpandedSteamWhistles
         AllCreativeModeTabs.register(modEventBus);
 
         AllItems.register(modEventBus);
+        AllBlocks.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
