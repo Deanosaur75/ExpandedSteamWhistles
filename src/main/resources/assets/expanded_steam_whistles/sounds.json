@@ -1,0 +1,15 @@
+{
+  "steam_whistle_superhigh": {
+    "subtitles": "sounds.expanded_steam_whistles.whistle_superhigh",
+    "sounds": [
+      "expanded_steam_whistles:whistle_superhigh"
+    ]
+  },
+
+  "steam_whistle_deep": {
+    "subtitles": "sounds.expanded_steam_whistles.whistle_deep",
+    "sounds": [
+      "expanded_steam_whistles:whistle_deep"
+    ]
+  }
+}

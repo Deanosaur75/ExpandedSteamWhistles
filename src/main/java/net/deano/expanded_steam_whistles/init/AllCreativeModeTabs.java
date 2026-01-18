@@ -20,8 +20,6 @@ public class AllCreativeModeTabs {
                     .displayItems((pParameters, pOutput) -> {
 
                         pOutput.accept(AllItems.WHISTLE.get());
-                        pOutput.accept(AllBlocks.CLANK.get());
-
                     })
                     .build()
     );

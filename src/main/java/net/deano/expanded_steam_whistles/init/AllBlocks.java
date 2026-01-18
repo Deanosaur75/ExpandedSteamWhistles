@@ -1,38 +1,51 @@
 package net.deano.expanded_steam_whistles.init;
 
+import net.deano.expanded_steam_whistles.datagen.BlockStateGen;
+import com.simibubi.create.foundation.data.CreateRegistrate;
+import com.simibubi.create.foundation.data.SharedProperties;
+import com.tterrag.registrate.util.entry.BlockEntry;
 import net.deano.expanded_steam_whistles.ExpandedSteamWhistles;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
+import net.deano.expanded_steam_whistles.whistle.ExpandedSteamWhistleBlock;
+import net.deano.expanded_steam_whistles.whistle.ExpandedSteamWhistleExtensionBlock;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.minecraft.world.level.material.MapColor;
 
-import java.util.function.Supplier;
+import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
+import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
 
+@SuppressWarnings("SameParameterValue")
 public class AllBlocks {
-    public static final DeferredRegister<Block> BLOCKS =
-            DeferredRegister.create(ForgeRegistries.BLOCKS, ExpandedSteamWhistles.MOD_ID);
 
-    public static final RegistryObject<Block> CLANK = registerBlock("clank",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).sound(SoundType.ANVIL)));
+    private static final CreateRegistrate REGISTRATE = ExpandedSteamWhistles.registrate();
 
-
-    private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
-        RegistryObject<T> toReturn = BLOCKS.register(name, block);
-        registerBlockItem(name, toReturn);
-        return toReturn;
-    }
-    private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block) {
-        return AllItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
+    static {
+        REGISTRATE.setCreativeTab(AllCreativeModeTabs.WHISTLE_TAB);
     }
 
+    // Main whistle
+    public static final BlockEntry<ExpandedSteamWhistleBlock> EXPANDED_STEAM_WHISTLE =
+            REGISTRATE.block("expanded_steam_whistle", ExpandedSteamWhistleBlock::new)
+                    .initialProperties(SharedProperties::copperMetal)
+                    .properties(p -> p.mapColor(MapColor.GOLD))
+                    .transform(pickaxeOnly())
+                    .blockstate(new BlockStateGen.ExpandedWhistleGenerator()::generate)
+                    .item()
+                    .transform(customItemModel())
+                    .register();
 
-    public static void register(IEventBus eventBus) {
-        BLOCKS.register(eventBus);
+    // Extension block
+    public static final BlockEntry<ExpandedSteamWhistleExtensionBlock> EXPANDED_STEAM_WHISTLE_EXTENSION =
+            REGISTRATE.block("expanded_steam_whistle_extension", ExpandedSteamWhistleExtensionBlock::new)
+                    .initialProperties(SharedProperties::copperMetal)
+                    .properties(p -> p.mapColor(MapColor.GOLD)
+                            .forceSolidOn())
+                    .transform(pickaxeOnly())
+                    .blockstate(BlockStateGen.whistleExtender()::generate) // << important fix
+                    .item()
+                    .transform(customItemModel())
+                    .register();
+
+    public static void register() {
+        // Ensures this class is loaded
     }
 }

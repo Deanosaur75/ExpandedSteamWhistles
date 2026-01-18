@@ -1,9 +1,15 @@
 package net.deano.expanded_steam_whistles;
 
 import com.mojang.logging.LogUtils;
-import net.deano.expanded_steam_whistles.init.AllBlocks;
-import net.deano.expanded_steam_whistles.init.AllCreativeModeTabs;
-import net.deano.expanded_steam_whistles.init.AllItems;
+import com.simibubi.create.foundation.data.CreateRegistrate;
+import com.simibubi.create.foundation.item.ItemDescription;
+import com.simibubi.create.foundation.item.KineticStats;
+import com.simibubi.create.foundation.item.TooltipModifier;
+import net.createmod.catnip.lang.FontHelper;
+import net.deano.expanded_steam_whistles.init.*;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -26,6 +32,13 @@ public class ExpandedSteamWhistles
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
 
+    private static final CreateRegistrate REGISTRATE = CreateRegistrate.create(MOD_ID)
+            .defaultCreativeTab((ResourceKey<CreativeModeTab>) null)
+            .setTooltipModifierFactory(item ->
+                    new ItemDescription.Modifier(item, FontHelper.Palette.STANDARD_CREATE)
+                            .andThen(TooltipModifier.mapNull(KineticStats.create(item)))
+            );
+
 
     public ExpandedSteamWhistles()
     {
@@ -34,7 +47,11 @@ public class ExpandedSteamWhistles
         AllCreativeModeTabs.register(modEventBus);
 
         AllItems.register(modEventBus);
-        AllBlocks.register(modEventBus);
+        AllBlocks.register();
+        AllBlockEntityTypes.register();
+        AllSoundEvents.register(modEventBus);
+
+        AllSoundEvents.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
@@ -69,5 +86,11 @@ public class ExpandedSteamWhistles
         public static void onClientSetup(FMLClientSetupEvent event)
         {
         }
+    }
+    public static ResourceLocation asResource(String path) {
+        return new ResourceLocation(MOD_ID, path);
+    }
+    public static CreateRegistrate registrate() {
+        return REGISTRATE;
     }
 }
