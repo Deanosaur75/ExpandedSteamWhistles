@@ -29,9 +29,10 @@ public class ExpandedSteamWhistleRenderer extends SafeBlockEntityRenderer<Expand
             return;
 
         Direction direction = blockState.getValue(ExpandedSteamWhistleBlock.FACING);
-        ExpandedSteamWhistleBlock size = blockState.getValue(ExpandedSteamWhistleBlock.SIZE);
+        ExpandedSteamWhistleBlock.ExpandedWhistleSize size = blockState.getValue(ExpandedSteamWhistleBlock.SIZE);
 
         PartialModel mouth = size == ExpandedWhistleSize.HUGE ? AllPartialModels.EXPANDED_WHISTLE_MOUTH_HUGE
+                : size == ExpandedWhistleSize.LARGE ? AllPartialModels.EXPANDED_WHISTLE_MOUTH_LARGE
                 : size == ExpandedWhistleSize.MEDIUM ? AllPartialModels.EXPANDED_WHISTLE_MOUTH_MEDIUM
                 : size == ExpandedWhistleSize.SMALL ? AllPartialModels.EXPANDED_WHISTLE_MOUTH_SMALL
                 : AllPartialModels.EXPANDED_WHISTLE_MOUTH_TINY;

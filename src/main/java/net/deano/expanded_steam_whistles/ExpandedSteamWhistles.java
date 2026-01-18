@@ -44,6 +44,8 @@ public class ExpandedSteamWhistles
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        REGISTRATE.registerEventListeners(modEventBus);
+
         AllCreativeModeTabs.register(modEventBus);
 
         AllItems.register(modEventBus);

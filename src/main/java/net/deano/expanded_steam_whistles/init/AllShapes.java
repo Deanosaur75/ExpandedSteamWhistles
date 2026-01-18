@@ -115,7 +115,7 @@ public class AllShapes {
         }
 
         public VoxelShaper forHorizontal(Direction direction) {
-            return build(VoxelShaper::forHorizontal, direction);
+            return VoxelShaper.forHorizontal(build(), direction);
         }
 
     }

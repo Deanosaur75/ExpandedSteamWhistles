@@ -18,10 +18,6 @@ public class AllPartialModels {
         return PartialModel.of(ExpandedSteamWhistles.asResource("block/" + path));
     }
 
-    private static PartialModel entity(String path) {
-        return PartialModel.of(ExpandedSteamWhistles.asResource("entity/" + path));
-    }
-
     public static void init() {
         // init static fields
     }
