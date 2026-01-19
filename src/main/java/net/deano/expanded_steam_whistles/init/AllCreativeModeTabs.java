@@ -20,6 +20,7 @@ public class AllCreativeModeTabs {
                     .displayItems((pParameters, pOutput) -> {
 
                         pOutput.accept(AllItems.WHISTLE.get());
+                        pOutput.accept(AllBlocks.EXPANDED_STEAM_WHISTLE.get());
                     })
                     .build()
     );

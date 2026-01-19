@@ -37,7 +37,7 @@ public class ExpandedSteamWhistleGenerator extends SpecialBlockStateGen {
         ResourceLocation parentLocation = model.getLocation();
         return prov.models()
                 .withExistingParent(parentLocation.getPath() + "_powered", parentLocation)
-                .texture("2", Create.asResource("block/copper_redstone_plate_powered"));
+                .texture("0", Create.asResource("block/copper_redstone_plate_powered"));
     }
 
 }

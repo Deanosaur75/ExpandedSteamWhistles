@@ -6,11 +6,15 @@ import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 
 import net.deano.expanded_steam_whistles.whistle.ExpandedSteamWhistleBlock;
+import net.deano.expanded_steam_whistles.whistle.ExpandedSteamWhistleExtensionBlock;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
 import net.minecraftforge.client.model.generators.ModelFile;
+
+import static net.deano.expanded_steam_whistles.whistle.ExpandedSteamWhistleBlock.SIZE;
+import static net.deano.expanded_steam_whistles.whistle.ExpandedSteamWhistleExtensionBlock.SHAPE;
 
 public class BlockStateGen {
 
@@ -32,23 +36,29 @@ public class BlockStateGen {
                 RegistrateBlockstateProvider prov,
                 BlockState state
         ) {
-            String size = state.getValue(ExpandedSteamWhistleBlock.SIZE).getSerializedName();
-            String placement = state.getValue(ExpandedSteamWhistleBlock.WALL) ? "wall" : "floor";
+            // Get size and placement
+            String size = state.getValue(SIZE).getSerializedName();
+            String placement = state.getValue(ExpandedSteamWhistleBlock.WALL) ? "wall" : "floor"; // example
+
             boolean powered = state.getValue(ExpandedSteamWhistleBlock.POWERED);
 
-            ModelFile model = AssetLookup.partialStandardModel(ctx, prov, size, placement);
-            if (!powered)
-                return model;
+            // Base model
+            ModelFile model = AssetLookup.whistleBaseModel(prov, size, placement);
 
-            ResourceLocation parent = model.getLocation();
-            return prov.models()
-                    .withExistingParent(parent.getPath() + "_powered", parent)
-                    .texture("0", "expanded_steam_whistles:block/copper_redstone_plate_powered");
+            // Return powered variant if needed
+            if (powered) {
+                return prov.models()
+                        .withExistingParent(size + "_" + placement + "_powered", model.getLocation())
+                        .texture("0", "expanded_steam_whistles:block/copper_redstone_plate_powered");
+            }
+
+            return model;
         }
     }
+
+
     public static SpecialBlockStateGen whistleExtender() {
         return new SpecialBlockStateGen() {
-
             @Override
             protected int getXRotation(BlockState state) {
                 return 0;
@@ -56,7 +66,10 @@ public class BlockStateGen {
 
             @Override
             protected int getYRotation(BlockState state) {
-                return horizontalAngle(state.getValue(ExpandedSteamWhistleBlock.FACING));
+                // Extension inherits FACING from the base block
+                return state.hasProperty(ExpandedSteamWhistleBlock.FACING)
+                        ? horizontalAngle(state.getValue(ExpandedSteamWhistleBlock.FACING))
+                        : 0;
             }
 
             @Override
@@ -65,10 +78,10 @@ public class BlockStateGen {
                     RegistrateBlockstateProvider prov,
                     BlockState state
             ) {
-                String size = state.getValue(ExpandedSteamWhistleBlock.SIZE).getSerializedName();
-                return AssetLookup.partialStandardModel(ctx, prov, size);
+                String size = state.getValue(SIZE).getSerializedName();
+                String shape = state.getValue(SHAPE).getSerializedName().toLowerCase(); // "single", "double", "double_connected"
+                return AssetLookup.whistleExtensionModel(prov, size, shape);
             }
         };
     }
-
 }

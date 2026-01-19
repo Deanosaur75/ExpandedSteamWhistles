@@ -2,6 +2,7 @@ package net.deano.expanded_steam_whistles.init;
 
 import net.deano.expanded_steam_whistles.ExpandedSteamWhistles;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.level.Level;
@@ -12,7 +13,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class AllSoundEvents {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS =
-            DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, ExpandedSteamWhistles.MOD_ID);
+            DeferredRegister.create(Registries.SOUND_EVENT, ExpandedSteamWhistles.MOD_ID);
 
 
 

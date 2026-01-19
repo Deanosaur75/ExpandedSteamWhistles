@@ -1,0 +1,49 @@
+{
+  "variants": {
+    "shape=double,size=huge": {
+      "model": "expanded_steam_whistles:block/expanded_steam_whistle/extension/expanded_steam_whistle_huge_double"
+    },
+    "shape=double,size=large": {
+      "model": "expanded_steam_whistles:block/expanded_steam_whistle/extension/expanded_steam_whistle_large_double"
+    },
+    "shape=double,size=medium": {
+      "model": "expanded_steam_whistles:block/expanded_steam_whistle/extension/expanded_steam_whistle_medium_double"
+    },
+    "shape=double,size=small": {
+      "model": "expanded_steam_whistles:block/expanded_steam_whistle/extension/expanded_steam_whistle_small_double"
+    },
+    "shape=double,size=tiny": {
+      "model": "expanded_steam_whistles:block/expanded_steam_whistle/extension/expanded_steam_whistle_tiny_double"
+    },
+    "shape=double_connected,size=huge": {
+      "model": "expanded_steam_whistles:block/expanded_steam_whistle/extension/expanded_steam_whistle_huge_double_connected"
+    },
+    "shape=double_connected,size=large": {
+      "model": "expanded_steam_whistles:block/expanded_steam_whistle/extension/expanded_steam_whistle_large_double_connected"
+    },
+    "shape=double_connected,size=medium": {
+      "model": "expanded_steam_whistles:block/expanded_steam_whistle/extension/expanded_steam_whistle_medium_double_connected"
+    },
+    "shape=double_connected,size=small": {
+      "model": "expanded_steam_whistles:block/expanded_steam_whistle/extension/expanded_steam_whistle_small_double_connected"
+    },
+    "shape=double_connected,size=tiny": {
+      "model": "expanded_steam_whistles:block/expanded_steam_whistle/extension/expanded_steam_whistle_tiny_double_connected"
+    },
+    "shape=single,size=huge": {
+      "model": "expanded_steam_whistles:block/expanded_steam_whistle/extension/expanded_steam_whistle_huge_single"
+    },
+    "shape=single,size=large": {
+      "model": "expanded_steam_whistles:block/expanded_steam_whistle/extension/expanded_steam_whistle_large_single"
+    },
+    "shape=single,size=medium": {
+      "model": "expanded_steam_whistles:block/expanded_steam_whistle/extension/expanded_steam_whistle_medium_single"
+    },
+    "shape=single,size=small": {
+      "model": "expanded_steam_whistles:block/expanded_steam_whistle/extension/expanded_steam_whistle_small_single"
+    },
+    "shape=single,size=tiny": {
+      "model": "expanded_steam_whistles:block/expanded_steam_whistle/extension/expanded_steam_whistle_tiny_single"
+    }
+  }
+}

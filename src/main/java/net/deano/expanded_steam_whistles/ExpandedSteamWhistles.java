@@ -48,12 +48,12 @@ public class ExpandedSteamWhistles
 
         AllCreativeModeTabs.register(modEventBus);
 
-        AllItems.register(modEventBus);
-        AllBlocks.register();
-        AllBlockEntityTypes.register();
         AllSoundEvents.register(modEventBus);
 
-        AllSoundEvents.register(modEventBus);
+        AllBlocks.register();
+        AllItems.register(modEventBus);
+
+        AllBlockEntityTypes.register();
 
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);

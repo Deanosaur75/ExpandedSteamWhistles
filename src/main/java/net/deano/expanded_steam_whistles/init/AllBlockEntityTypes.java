@@ -3,7 +3,6 @@ package net.deano.expanded_steam_whistles.init;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import net.deano.expanded_steam_whistles.ExpandedSteamWhistles;
-import net.deano.expanded_steam_whistles.whistle.ExpandedSteamWhistleBlock;
 import net.deano.expanded_steam_whistles.whistle.ExpandedSteamWhistleBlockEntity;
 import net.deano.expanded_steam_whistles.whistle.ExpandedSteamWhistleRenderer;
 
