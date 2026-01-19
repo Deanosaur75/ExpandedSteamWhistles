@@ -23,6 +23,8 @@ public class DataGenerators {
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
         ExistingFileHelper helper = event.getExistingFileHelper();
 
+        addExtraRegistrateData();
+
 
       //  generator.addProvider(event.includeServer(), new ModelProvider(packOutput));
     }
