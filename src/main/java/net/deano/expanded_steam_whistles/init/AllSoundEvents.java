@@ -18,12 +18,12 @@ public class AllSoundEvents {
 
 
     public static final RegistryObject<SoundEvent>
-            EXPANDED_WHISTLE_SUPERHIGH = registerSoundEvents("steam_whistle_superhigh"),
-            EXPANDED_WHISTLE_HIGH = registerSoundEvents("steam_whistle_high"),
-            EXPANDED_WHISTLE_MEDIUM = registerSoundEvents("steam_whistle_medium"),
-            EXPANDED_WHISTLE_LOW = registerSoundEvents("steam_whistle_low"),
-            EXPANDED_WHISTLE_DEEP = registerSoundEvents("steam_whistle_deep"),
-            WHISTLE_CHIFF = registerSoundEvents("whistle_chiff");
+            EXPANDED_WHISTLE_SUPERHIGH = registerSoundEvents("expanded_steam_whistle_superhigh"),
+            EXPANDED_WHISTLE_HIGH = registerSoundEvents("expanded_steam_whistle_high"),
+            EXPANDED_WHISTLE_MEDIUM = registerSoundEvents("expanded_steam_whistle_medium"),
+            EXPANDED_WHISTLE_LOW = registerSoundEvents("expanded_steam_whistle_low"),
+            EXPANDED_WHISTLE_DEEP = registerSoundEvents("expanded_steam_whistle_deep"),
+            WHISTLE_CHIFF = registerSoundEvents("expanded_whistle_chiff");
 
     private static RegistryObject<SoundEvent> registerSoundEvents(java.lang.String name) {
         return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(ExpandedSteamWhistles.MOD_ID, name)));

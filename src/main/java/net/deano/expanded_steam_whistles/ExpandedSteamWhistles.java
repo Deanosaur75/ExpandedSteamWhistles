@@ -53,6 +53,7 @@ public class ExpandedSteamWhistles
         AllBlocks.register();
         AllItems.register(modEventBus);
         AllPartialModels.init();
+        AllTags.init();
 
         AllBlockEntityTypes.register();
 
