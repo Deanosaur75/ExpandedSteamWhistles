@@ -7,11 +7,11 @@ public class AllPartialModels {
     public static final PartialModel
 
 
-            EXPANDED_WHISTLE_MOUTH_HUGE = block("steam_whistle/huge_mouth"),
-            EXPANDED_WHISTLE_MOUTH_LARGE = block("steam_whistle/large_mouth"),
-            EXPANDED_WHISTLE_MOUTH_MEDIUM = block("steam_whistle/medium_mouth"),
-            EXPANDED_WHISTLE_MOUTH_SMALL = block("steam_whistle/small_mouth"),
-            EXPANDED_WHISTLE_MOUTH_TINY = block("steam_whistle/tiny_mouth");
+            EXPANDED_WHISTLE_MOUTH_HUGE = block("expanded_steam_whistle/expanded_steam_whistle_huge_mouth"),
+            EXPANDED_WHISTLE_MOUTH_LARGE = block("expanded_steam_whistle/expanded_steam_whistle_large_mouth"),
+            EXPANDED_WHISTLE_MOUTH_MEDIUM = block("expanded_steam_whistle/expanded_steam_whistle_medium_mouth"),
+            EXPANDED_WHISTLE_MOUTH_SMALL = block("expanded_steam_whistle/expanded_steam_whistle_small_mouth"),
+            EXPANDED_WHISTLE_MOUTH_TINY = block("expanded_steam_whistle/expanded_steam_whistle_tiny_mouth");
 
 
     private static PartialModel block(String path) {
