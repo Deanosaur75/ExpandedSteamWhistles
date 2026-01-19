@@ -21,9 +21,7 @@ public class BlockStateGen {
     public static class ExpandedWhistleGenerator extends SpecialBlockStateGen {
 
         @Override
-        protected int getXRotation(BlockState state) {
-            return 0;
-        }
+        protected int getXRotation(BlockState state) { return 0; }
 
         @Override
         protected int getYRotation(BlockState state) {
@@ -31,22 +29,15 @@ public class BlockStateGen {
         }
 
         @Override
-        public <T extends Block> ModelFile getModel(
-                DataGenContext<Block, T> ctx,
-                RegistrateBlockstateProvider prov,
-                BlockState state
-        ) {
-            // Get size and placement
+        public <T extends Block> ModelFile getModel(DataGenContext<Block, T> ctx,
+                                                    RegistrateBlockstateProvider prov,
+                                                    BlockState state) {
             String size = state.getValue(SIZE).getSerializedName();
-            String placement = state.getValue(ExpandedSteamWhistleBlock.WALL) ? "wall" : "floor"; // example
+            String placement = state.getValue(ExpandedSteamWhistleBlock.WALL) ? "wall" : "floor";
 
-            boolean powered = state.getValue(ExpandedSteamWhistleBlock.POWERED);
+            ModelFile model = AssetLookup.partialBaseModel(ctx, prov, size, placement);
 
-            // Base model
-            ModelFile model = AssetLookup.whistleBaseModel(prov, size, placement);
-
-            // Return powered variant if needed
-            if (powered) {
+            if (state.getValue(ExpandedSteamWhistleBlock.POWERED)) {
                 return prov.models()
                         .withExistingParent(size + "_" + placement + "_powered", model.getLocation())
                         .texture("0", "expanded_steam_whistles:block/copper_redstone_plate_powered");
@@ -55,6 +46,7 @@ public class BlockStateGen {
             return model;
         }
     }
+
 
 
     public static SpecialBlockStateGen whistleExtender() {
@@ -80,7 +72,7 @@ public class BlockStateGen {
             ) {
                 String size = state.getValue(SIZE).getSerializedName();
                 String shape = state.getValue(SHAPE).getSerializedName().toLowerCase(); // "single", "double", "double_connected"
-                return AssetLookup.whistleExtensionModel(prov, size, shape);
+                return AssetLookup.partialExtensionModel(ctx, prov, size, shape);
             }
         };
     }

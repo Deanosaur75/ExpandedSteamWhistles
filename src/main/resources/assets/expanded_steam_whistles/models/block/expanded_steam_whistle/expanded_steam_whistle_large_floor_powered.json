@@ -1,6 +1,0 @@
-{
-  "parent": "expanded_steam_whistles:block/expanded_steam_whistle/expanded_steam_whistle_large_floor",
-  "textures": {
-    "0": "expanded_steam_whistles:block/copper_redstone_plate_powered"
-  }
-}

@@ -41,8 +41,6 @@ public class AllBlocks {
                             .forceSolidOn())
                     .transform(pickaxeOnly())
                     .blockstate(BlockStateGen.whistleExtender()::generate) // << important fix
-                    .item()
-                    .transform(customItemModel())
                     .register();
 
     public static void register() {

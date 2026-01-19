@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "expanded_steam_whistles:expanded_steam_whistle_extension"
+          "name": "minecraft:air"
         }
       ],
       "rolls": 1.0
