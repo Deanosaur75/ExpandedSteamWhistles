@@ -2,38 +2,39 @@
 	"format_version": "1.21.6",
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "expanded_steam_whistles:block/whistle",
+		"0": "expanded_steam_whistles:block/whistle_extended",
 		"particle": "expanded_steam_whistles:block/whistle_particle"
 	},
 	"elements": [
 		{
-			"name": "Whistle Large Cap",
-			"from": [2, 8, 2],
-			"to": [14, 10, 14],
+			"name": "Whistle large Extension",
+			"from": [2, 0, 2],
+			"to": [14, 8, 14],
 			"faces": {
-				"north": {"uv": [12.5, 0.75, 15.5, 1.25], "texture": "#0"},
-				"east": {"uv": [12.5, 0.75, 15.5, 1.25], "texture": "#0"},
-				"south": {"uv": [12.5, 0.75, 15.5, 1.25], "texture": "#0"},
-				"west": {"uv": [12.5, 0.75, 15.5, 1.25], "texture": "#0"},
-				"up": {"uv": [0.5, 12.5, 3.5, 15.5], "texture": "#0"},
-				"down": {"uv": [12.5, 12.5, 15.5, 15.5], "texture": "#0"}
+				"north": {"uv": [12.5, 8.5, 15.5, 10.5], "texture": "#0"},
+				"east": {"uv": [12.5, 8.5, 15.5, 10.5], "texture": "#0"},
+				"south": {"uv": [12.5, 8.5, 15.5, 10.5], "texture": "#0"},
+				"west": {"uv": [12.5, 8.5, 15.5, 10.5], "texture": "#0"}
 			}
 		},
 		{
-			"name": "Whistle large Extension",
-			"from": [3, 0, 3],
-			"to": [13, 8, 13],
+			"name": "Whistle Large Cap",
+			"from": [1, 8, 1],
+			"to": [15, 10, 15],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, -8, 0]},
 			"faces": {
-				"north": {"uv": [12.75, 1.5, 15.25, 3.5], "texture": "#0"},
-				"east": {"uv": [12.75, 1.5, 15.25, 3.5], "texture": "#0"},
-				"south": {"uv": [12.75, 1.5, 15.25, 3.5], "texture": "#0"},
-				"west": {"uv": [12.75, 1.5, 15.25, 3.5], "texture": "#0"}
+				"north": {"uv": [12.25, 7.75, 15.75, 8.25], "texture": "#0"},
+				"east": {"uv": [12.25, 7.75, 15.75, 8.25], "texture": "#0"},
+				"south": {"uv": [12.25, 7.75, 15.75, 8.25], "texture": "#0"},
+				"west": {"uv": [12.25, 7.75, 15.75, 8.25], "texture": "#0"},
+				"up": {"uv": [4.25, 3.75, 7.75, 7.25], "texture": "#0"},
+				"down": {"uv": [12.5, 12.5, 16, 16], "texture": "#0"}
 			}
 		}
 	],
 	"groups": [
 		{
-			"name": "Whistle Large",
+			"name": "Whistle Huge",
 			"origin": [8, 8, 8],
 			"color": 0,
 			"children": [
