@@ -1,5 +1,6 @@
 {
   "required": true,
+  "minMixinExtrasVersion": "0.5.0-beta.4",
   "compatibilityLevel": "JAVA_17",
   "package": "net.deano.expanded_steam_whistles.mixin",
   "refmap": "expanded_steam_whistles.refmap.json",
@@ -8,8 +9,5 @@
   },
   "mixins": [
     "BoilerDataEvaluateMixin"
-  ],
-  "mixinextras": {
-    "minVersion": "0.5.0"
-  }
+  ]
 }

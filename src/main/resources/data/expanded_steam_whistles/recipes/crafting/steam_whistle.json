@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "expanded_steam_whistles:expanded_steam_whistle"
+    }
+  ],
+  "result": {
+    "item": "create:steam_whistle",
+    "count": 1
+  }
+}
