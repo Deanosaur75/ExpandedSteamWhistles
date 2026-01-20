@@ -1,4 +1,11 @@
 {
   "block.expanded_steam_whistles.expanded_steam_whistle": "Expanded Steam Whistle",
-  "block.expanded_steam_whistles.expanded_steam_whistle_extension": "Expanded Steam Whistle Extension"
+  "block.expanded_steam_whistles.expanded_steam_whistle_extension": "Expanded Steam Whistle Extension",
+  "creativetab.whistle_tab": "Create: Expanded Steam Whistles",
+  "key.category.expanded_steam_whistles": "Create: Expanded Steam Whistles",
+  "sounds.expanded_steam_whistles.expanded_steam_whistle_deep": "Deep Whistle",
+  "sounds.expanded_steam_whistles.expanded_steam_whistle_high": "High Whistle",
+  "sounds.expanded_steam_whistles.expanded_steam_whistle_low": "Low Whistle",
+  "sounds.expanded_steam_whistles.expanded_steam_whistle_medium": "Whistle",
+  "sounds.expanded_steam_whistles.expanded_steam_whistle_superhigh": "Superhigh Whistle"
 }

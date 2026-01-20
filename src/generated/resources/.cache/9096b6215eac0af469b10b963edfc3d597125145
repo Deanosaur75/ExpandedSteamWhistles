@@ -1,8 +1,8 @@
-// 1.20.1	2026-01-18T22:55:41.5477266	Registrate Provider for expanded_steam_whistles [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.20.1	2026-01-19T17:29:36.1245581	Registrate Provider for expanded_steam_whistles [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 8f9d3c8744f31401408210acaad8922c27993ed3 assets/expanded_steam_whistles/blockstates/expanded_steam_whistle.json
 0f84f581251b409a6845063adb14df5ee3eac71f assets/expanded_steam_whistles/blockstates/expanded_steam_whistle_extension.json
-529935cd2c46c422e1ab87e692549cc742fd88c8 assets/expanded_steam_whistles/lang/en_ud.json
-855847e59fe2b5b269ae50aae18c0417d81368ab assets/expanded_steam_whistles/lang/en_us.json
+785e73ea8962f3147810659718ada83bbfefb39a assets/expanded_steam_whistles/lang/en_ud.json
+77136a3adb58fb074204645d23b26155508a2ee0 assets/expanded_steam_whistles/lang/en_us.json
 fb0a5871c6917b3b61bb19286464c201df49ee00 assets/expanded_steam_whistles/models/block/huge_floor_powered.json
 6b6e8c458df4aa3f917794dabfc30f519bfa7b49 assets/expanded_steam_whistles/models/block/huge_wall_powered.json
 74343f95133a200d7418ee87eb7a361d4b7717dc assets/expanded_steam_whistles/models/block/large_floor_powered.json

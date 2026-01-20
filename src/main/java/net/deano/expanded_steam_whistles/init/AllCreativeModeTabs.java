@@ -15,11 +15,10 @@ public class AllCreativeModeTabs {
 
 
     public static final RegistryObject<CreativeModeTab> WHISTLE_TAB = CREATIVE_MODE_TABS.register("whistle_tab",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(AllItems.WHISTLE.get()))
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(AllBlocks.EXPANDED_STEAM_WHISTLE.get()))
                     .title(Component.translatable("creativetab.whistle_tab"))
                     .displayItems((pParameters, pOutput) -> {
 
-                        pOutput.accept(AllItems.WHISTLE.get());
                         pOutput.accept(AllBlocks.EXPANDED_STEAM_WHISTLE.get());
                     })
                     .build()

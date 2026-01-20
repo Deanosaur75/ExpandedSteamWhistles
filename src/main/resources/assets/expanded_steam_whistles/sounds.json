@@ -1,31 +1,31 @@
 {
   "expanded_steam_whistle_superhigh": {
-    "subtitles": "sounds.expanded_steam_whistles.whistle_superhigh",
+    "subtitles": "sounds.expanded_steam_whistles.expanded_steam_whistle_superhigh",
     "sounds": [
       "expanded_steam_whistles:expanded_whistle_superhigh"
     ]
   },
   "expanded_steam_whistle_high": {
-    "subtitles": "sounds.expanded_steam_whistles.whistle_high",
+    "subtitles": "sounds.expanded_steam_whistles.expanded_steam_whistle_high",
     "sounds": [
       "expanded_steam_whistles:expanded_whistle_high"
     ]
   },
   "expanded_steam_whistle_medium": {
-    "subtitles": "sounds.expanded_steam_whistles.whistle_medium",
+    "subtitles": "sounds.expanded_steam_whistles.expanded_steam_whistle_medium",
     "sounds": [
       "expanded_steam_whistles:expanded_whistle_medium"
     ]
   },
   "expanded_steam_whistle_low": {
-    "subtitles": "sounds.expanded_steam_whistles.whistle_medium",
+    "subtitles": "sounds.expanded_steam_whistles.expanded_steam_whistle_medium",
     "sounds": [
       "expanded_steam_whistles:expanded_whistle_low"
     ]
   },
 
   "expanded_steam_whistle_deep": {
-    "subtitles": "sounds.expanded_steam_whistles.whistle_deep",
+    "subtitles": "sounds.expanded_steam_whistles.expanded_steam_whistle_deep",
     "sounds": [
       "expanded_steam_whistles:expanded_whistle_deep"
     ]
