@@ -1,6 +1,7 @@
 package net.deano.expanded_steam_whistles.whistle;
 
 
+import net.createmod.catnip.platform.CatnipServices;
 import net.deano.expanded_steam_whistles.init.AllSoundEvents;
 
 import com.simibubi.create.api.equipment.goggles.IHaveGoggleInformation;
@@ -20,6 +21,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Direction.Axis;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundSource;
@@ -29,9 +31,9 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.fml.DistExecutor;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.fml.loading.FMLEnvironment;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -92,19 +94,18 @@ public class ExpandedSteamWhistleBlockEntity extends SmartBlockEntity implements
                 || isVirtual());
         animation.chase(powered ? 1 : 0, powered ? .5f : .4f, powered ? Chaser.EXP : Chaser.LINEAR);
         animation.tickChaser();
-        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> this.tickAudio(getOctave(), powered));
-    }
+        CatnipServices.PLATFORM.executeOnClientOnly(() -> () -> this.tickAudio(getOctave(), powered));    }
 
     @Override
-    protected void write(CompoundTag tag, boolean clientPacket) {
+    protected void write(CompoundTag tag, HolderLookup.Provider registries, boolean clientPacket) {
         tag.putInt("Pitch", pitch);
-        super.write(tag, clientPacket);
+        super.write(tag, registries, clientPacket);
     }
 
     @Override
-    protected void read(CompoundTag tag, boolean clientPacket) {
+    protected void read(CompoundTag tag, HolderLookup.Provider registries, boolean clientPacket) {
         pitch = tag.getInt("Pitch");
-        super.read(tag, clientPacket);
+        super.read(tag, registries, clientPacket);
     }
 
     @Override

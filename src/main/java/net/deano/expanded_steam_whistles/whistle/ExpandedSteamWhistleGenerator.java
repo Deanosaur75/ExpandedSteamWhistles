@@ -10,7 +10,9 @@ import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
+
+import static com.simibubi.create.content.decoration.steamWhistle.WhistleBlock.WALL;
 
 public class ExpandedSteamWhistleGenerator extends SpecialBlockStateGen {
 
@@ -27,7 +29,7 @@ public class ExpandedSteamWhistleGenerator extends SpecialBlockStateGen {
     @Override
     public <T extends Block> ModelFile getModel(DataGenContext<Block, T> ctx, RegistrateBlockstateProvider prov,
                                                 BlockState state) {
-        String wall = state.getValue(ExpandedSteamWhistleBlock.WALL) ? "wall" : "floor";
+        String wall = state.getValue(WALL) ? "wall" : "floor";
         String size = state.getValue(ExpandedSteamWhistleBlock.SIZE)
                 .getSerializedName();
         boolean powered = state.getValue(ExpandedSteamWhistleBlock.POWERED);

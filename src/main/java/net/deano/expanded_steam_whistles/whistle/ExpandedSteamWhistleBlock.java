@@ -19,7 +19,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -45,10 +45,12 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
+import static com.simibubi.create.content.decoration.steamWhistle.WhistleBlock.WALL;
+
+
 public class ExpandedSteamWhistleBlock extends Block implements IBE<ExpandedSteamWhistleBlockEntity>, IWrenchable {
 
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
-    public static final BooleanProperty WALL = BooleanProperty.create("wall");
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
     public static final EnumProperty<ExpandedWhistleSize> SIZE = EnumProperty.create("size", ExpandedWhistleSize.class);
 
@@ -65,7 +67,8 @@ public class ExpandedSteamWhistleBlock extends Block implements IBE<ExpandedStea
 
     public ExpandedSteamWhistleBlock(Properties p_49795_) {
         super(p_49795_);
-        registerDefaultState(defaultBlockState().setValue(POWERED, false)
+        registerDefaultState(defaultBlockState()
+                .setValue(POWERED, false)
                 .setValue(WALL, false)
                 .setValue(SIZE, ExpandedWhistleSize.MEDIUM));
     }
@@ -112,19 +115,19 @@ public class ExpandedSteamWhistleBlock extends Block implements IBE<ExpandedStea
     }
 
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand,
-                                 BlockHitResult pHit) {
-        if (pPlayer == null)
-            return InteractionResult.PASS;
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
+                                              Player player, InteractionHand hand, BlockHitResult hit) {
+        if (player == null)
+            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 
-        ItemStack heldItem = pPlayer.getItemInHand(pHand);
-        if (AllBlocks.EXPANDED_STEAM_WHISTLE.isIn(heldItem)) {
-            incrementSize(pLevel, pPos);
-            return InteractionResult.SUCCESS;
+        if (AllBlocks.EXPANDED_STEAM_WHISTLE.isIn(stack)) {
+            incrementSize(level, pos);
+            return ItemInteractionResult.SUCCESS;
         }
 
-        return InteractionResult.PASS;
+        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
+
 
     public static void incrementSize(LevelAccessor pLevel, BlockPos pPos) {
         BlockState base = pLevel.getBlockState(pPos);
@@ -195,14 +198,16 @@ public class ExpandedSteamWhistleBlock extends Block implements IBE<ExpandedStea
     }
 
     @Override
-    public void neighborChanged(BlockState state, Level worldIn, BlockPos pos, Block blockIn, BlockPos fromPos,
-                                boolean isMoving) {
-        if (worldIn.isClientSide)
+    public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block,
+                                BlockPos fromPos, boolean isMoving) {
+        if (level.isClientSide)
             return;
+
         boolean previouslyPowered = state.getValue(POWERED);
-        if (previouslyPowered != worldIn.hasNeighborSignal(pos))
-            worldIn.setBlock(pos, state.cycle(POWERED), 2);
+        if (previouslyPowered != level.hasNeighborSignal(pos))
+            level.setBlock(pos, state.cycle(POWERED), Block.UPDATE_CLIENTS);
     }
+
 
     public BlockState updateShape(BlockState pState, Direction pFacing, BlockState pFacingState, LevelAccessor pLevel,
                                   BlockPos pCurrentPos, BlockPos pFacingPos) {
@@ -230,9 +235,10 @@ public class ExpandedSteamWhistleBlock extends Block implements IBE<ExpandedStea
     }
 
     @Override
-    public boolean isPathfindable(BlockState state, BlockGetter reader, BlockPos pos, PathComputationType type) {
+    protected boolean isPathfindable(BlockState state, PathComputationType type) {
         return false;
     }
+
 
     public static Direction getAttachedDirection(BlockState state) {
         return state.getValue(WALL) ? state.getValue(FACING) : Direction.DOWN;

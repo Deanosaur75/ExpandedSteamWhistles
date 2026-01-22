@@ -1,4 +1,4 @@
-// 1.20.1	2026-01-19T17:29:36.1245581	Registrate Provider for expanded_steam_whistles [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.21.1	2026-01-21T20:22:39.7911169	Registrate Provider for expanded_steam_whistles [Registries, Data Maps, Recipes, Advancements, Loot Tables, Tags (enchantments), Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
 8f9d3c8744f31401408210acaad8922c27993ed3 assets/expanded_steam_whistles/blockstates/expanded_steam_whistle.json
 0f84f581251b409a6845063adb14df5ee3eac71f assets/expanded_steam_whistles/blockstates/expanded_steam_whistle_extension.json
 785e73ea8962f3147810659718ada83bbfefb39a assets/expanded_steam_whistles/lang/en_ud.json
@@ -14,6 +14,6 @@ df6f41781aa023543526c8c8917d67ac8f1f2072 assets/expanded_steam_whistles/models/b
 0fdfecab7d64e56ecb1e8bfad964c15d3d49c165 assets/expanded_steam_whistles/models/block/tiny_floor_powered.json
 b35c7c0530ddd7838faf404d2f92cec2a36851e4 assets/expanded_steam_whistles/models/block/tiny_wall_powered.json
 83de99cdfcbcfdcff46527119df47407a11fdb28 assets/expanded_steam_whistles/models/item/expanded_steam_whistle.json
-6cdb9a5d6584222a487d1f18848af12604f0510d data/expanded_steam_whistles/loot_tables/blocks/expanded_steam_whistle.json
-bf6da52ab44a9f0c4c07f63187fc613427158d49 data/expanded_steam_whistles/loot_tables/blocks/expanded_steam_whistle_extension.json
-b47a09c5d09cd6e81e3d83974ad075b90b344a83 data/minecraft/tags/blocks/mineable/pickaxe.json
+6cdb9a5d6584222a487d1f18848af12604f0510d data/expanded_steam_whistles/loot_table/blocks/expanded_steam_whistle.json
+bf6da52ab44a9f0c4c07f63187fc613427158d49 data/expanded_steam_whistles/loot_table/blocks/expanded_steam_whistle_extension.json
+b47a09c5d09cd6e81e3d83974ad075b90b344a83 data/minecraft/tags/block/mineable/pickaxe.json

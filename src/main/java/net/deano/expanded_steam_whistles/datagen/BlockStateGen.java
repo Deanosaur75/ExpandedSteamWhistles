@@ -11,8 +11,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
-import net.minecraftforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 
+import static com.simibubi.create.content.decoration.steamWhistle.WhistleBlock.WALL;
 import static net.deano.expanded_steam_whistles.whistle.ExpandedSteamWhistleBlock.SIZE;
 import static net.deano.expanded_steam_whistles.whistle.ExpandedSteamWhistleExtensionBlock.SHAPE;
 
@@ -33,7 +34,7 @@ public class BlockStateGen {
                                                     RegistrateBlockstateProvider prov,
                                                     BlockState state) {
             String size = state.getValue(SIZE).getSerializedName();
-            String placement = state.getValue(ExpandedSteamWhistleBlock.WALL) ? "wall" : "floor";
+            String placement = state.getValue(WALL) ? "wall" : "floor";
 
             ModelFile model = AssetLookup.partialBaseModel(ctx, prov, size, placement);
 

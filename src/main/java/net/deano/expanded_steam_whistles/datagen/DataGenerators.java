@@ -1,38 +1,34 @@
 package net.deano.expanded_steam_whistles.datagen;
 
+import net.deano.expanded_steam_whistles.ExpandedSteamWhistles;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.simibubi.create.foundation.utility.FilesHelper;
 import com.tterrag.registrate.providers.ProviderType;
-import net.deano.expanded_steam_whistles.ExpandedSteamWhistles;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-
+import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 
-@Mod.EventBusSubscriber(modid = ExpandedSteamWhistles.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 
 public class DataGenerators {
-    @SubscribeEvent
+
+    public static void gatherDataHighPriority(GatherDataEvent event) {
+        if (event.getMods().contains(ExpandedSteamWhistles.MOD_ID))
+            addExtraRegistrateData();
+    }
+
     public static void gatherData(GatherDataEvent event) {
+        if (!event.getMods().contains(ExpandedSteamWhistles.MOD_ID)) return;
+
         DataGenerator generator = event.getGenerator();
-        PackOutput packOutput = generator.getPackOutput();
+        PackOutput output = generator.getPackOutput();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
-        ExistingFileHelper helper = event.getExistingFileHelper();
-
-        addExtraRegistrateData();
-
-
-        //  generator.addProvider(event.includeServer(), new ModelProvider(packOutput));
     }
 
     private static void addExtraRegistrateData() {
