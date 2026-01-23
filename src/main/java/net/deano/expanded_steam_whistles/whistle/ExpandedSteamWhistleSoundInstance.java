@@ -66,5 +66,10 @@ public class ExpandedSteamWhistleSoundInstance extends AbstractTickableSoundInst
         if (volume == 0)
             stop();
     }
+    @Override
+    public Attenuation getAttenuation() {
+        return Attenuation.LINEAR;
+    }
+
 
 }

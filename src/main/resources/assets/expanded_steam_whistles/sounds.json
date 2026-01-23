@@ -2,7 +2,10 @@
   "expanded_steam_whistle_superhigh": {
     "subtitles": "sounds.expanded_steam_whistles.expanded_steam_whistle_superhigh",
     "sounds": [
-      "expanded_steam_whistles:expanded_whistle_superhigh"
+      {
+        "name": "expanded_steam_whistles:expanded_whistle_superhigh",
+        "attenuation_distance": 64
+      }
     ]
   },
   "expanded_steam_whistle_high": {
@@ -14,20 +17,28 @@
   "expanded_steam_whistle_medium": {
     "subtitles": "sounds.expanded_steam_whistles.expanded_steam_whistle_medium",
     "sounds": [
-      "expanded_steam_whistles:expanded_whistle_medium"
+      {
+        "name": "expanded_steam_whistles:expanded_whistle_medium",
+        "attenuation_distance": 64
+      }
     ]
   },
   "expanded_steam_whistle_low": {
-    "subtitles": "sounds.expanded_steam_whistles.expanded_steam_whistle_medium",
+    "subtitles": "sounds.expanded_steam_whistles.expanded_steam_whistle_low",
     "sounds": [
-      "expanded_steam_whistles:expanded_whistle_low"
+      {
+        "name": "expanded_steam_whistles:expanded_whistle_low",
+        "attenuation_distance": 64
+      }
     ]
   },
 
   "expanded_steam_whistle_deep": {
     "subtitles": "sounds.expanded_steam_whistles.expanded_steam_whistle_deep",
     "sounds": [
-      "expanded_steam_whistles:expanded_whistle_deep"
-    ]
+      {
+        "name": "expanded_steam_whistles:expanded_whistle_deep",
+        "attenuation_distance": 64
+      }    ]
   }
 }
