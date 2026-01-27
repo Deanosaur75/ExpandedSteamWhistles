@@ -154,7 +154,7 @@ public class ExpandedSteamWhistleBlockEntity extends SmartBlockEntity implements
                     worldPosition,
                     AllSoundEvents.WHISTLE_CHIFF.get(),
                     SoundSource.BLOCKS,
-                    maxVolume * 0.1f,
+                    0.1f,
                     f
             );
 
