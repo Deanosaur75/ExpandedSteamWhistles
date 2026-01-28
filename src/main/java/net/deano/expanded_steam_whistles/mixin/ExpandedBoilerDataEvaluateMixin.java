@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(value = BoilerData.class, remap = false)
-public class BoilerDataEvaluateMixin {
+public class ExpandedBoilerDataEvaluateMixin {
 
     @Definition(id = "STEAM_WHISTLE", field = "Lcom/simibubi/create/AllBlocks;STEAM_WHISTLE:Lcom/tterrag/registrate/util/entry/BlockEntry;")
     @Definition(id = "has", method = "Lcom/tterrag/registrate/util/entry/BlockEntry;has(Lnet/minecraft/world/level/block/state/BlockState;)Z")
@@ -21,5 +21,4 @@ public class BoilerDataEvaluateMixin {
         return original
                 || attachedState.is(AllTags.AllBlockTags.FEELING_VALID.tag);
     }
-
 }

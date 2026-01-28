@@ -1,7 +1,11 @@
 package net.deano.expanded_steam_whistles.whistle;
 
 
+import com.simibubi.create.content.decoration.steamWhistle.WhistleBlock;
 import net.deano.expanded_steam_whistles.init.AllSoundEvents;
+import net.deano.expanded_steam_whistles.init.AllBlocks;
+import net.deano.expanded_steam_whistles.compat.ModCompat;
+import net.deano.expanded_steam_whistles.compat.pipeorgans.PipeOrgansCompat;
 
 import com.simibubi.create.api.equipment.goggles.IHaveGoggleInformation;
 import com.simibubi.create.content.fluids.tank.FluidTankBlockEntity;
@@ -15,7 +19,6 @@ import net.createmod.catnip.animation.LerpedFloat;
 import net.createmod.catnip.animation.LerpedFloat.Chaser;
 import net.createmod.catnip.math.AngleHelper;
 import net.createmod.catnip.math.VecHelper;
-import net.deano.expanded_steam_whistles.init.AllBlocks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -87,9 +90,26 @@ public class ExpandedSteamWhistleBlockEntity extends SmartBlockEntity implements
         }
 
         FluidTankBlockEntity tank = getTank();
-        boolean powered = isPowered()
-                && (tank != null && tank.boiler.isActive() && (tank.boiler.passiveHeat || tank.boiler.activeHeat > 0)
-                || isVirtual());
+
+        boolean windchestActive = false;
+        if (ModCompat.PIPE_ORGANS) {
+            Direction facing = WhistleBlock.getAttachedDirection(getBlockState());
+            windchestActive = PipeOrgansCompat.isWindchestActive(
+                    level,
+                    worldPosition,
+                    facing
+            );
+        }
+
+        boolean powered =
+                isPowered()
+                        && (
+                        (tank != null
+                                && tank.boiler.isActive()
+                                && (tank.boiler.passiveHeat || tank.boiler.activeHeat > 0))
+                                || windchestActive
+                );
+
         animation.chase(powered ? 1 : 0, powered ? .5f : .4f, powered ? Chaser.EXP : Chaser.LINEAR);
         animation.tickChaser();
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> this.tickAudio(getOctave(), powered));
@@ -190,7 +210,7 @@ public class ExpandedSteamWhistleBlockEntity extends SmartBlockEntity implements
         if (tank == null || tank.isRemoved()) {
             if (tank != null)
                 source = new WeakReference<>(null);
-            Direction facing = ExpandedSteamWhistleBlock.getAttachedDirection(getBlockState());
+            Direction facing = WhistleBlock.getAttachedDirection(getBlockState());
             BlockEntity be = level.getBlockEntity(worldPosition.relative(facing));
             if (be instanceof FluidTankBlockEntity tankBe)
                 source = new WeakReference<>(tank = tankBe);

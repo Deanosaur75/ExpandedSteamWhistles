@@ -2,8 +2,10 @@ package net.deano.expanded_steam_whistles.whistle;
 
 
 import com.simibubi.create.Create;
+import com.simibubi.create.content.decoration.steamWhistle.WhistleBlock;
 import com.simibubi.create.foundation.data.AssetLookup;
 import com.simibubi.create.foundation.data.SpecialBlockStateGen;
+
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 
@@ -21,13 +23,13 @@ public class ExpandedSteamWhistleGenerator extends SpecialBlockStateGen {
 
     @Override
     protected int getYRotation(BlockState state) {
-        return horizontalAngle(state.getValue(ExpandedSteamWhistleBlock.FACING));
+        return horizontalAngle(state.getValue(WhistleBlock.FACING));
     }
 
     @Override
     public <T extends Block> ModelFile getModel(DataGenContext<Block, T> ctx, RegistrateBlockstateProvider prov,
                                                 BlockState state) {
-        String wall = state.getValue(ExpandedSteamWhistleBlock.WALL) ? "wall" : "floor";
+        String wall = state.getValue(WhistleBlock.WALL) ? "wall" : "floor";
         String size = state.getValue(ExpandedSteamWhistleBlock.SIZE)
                 .getSerializedName();
         boolean powered = state.getValue(ExpandedSteamWhistleBlock.POWERED);

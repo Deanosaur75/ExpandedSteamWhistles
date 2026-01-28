@@ -9,6 +9,9 @@ displayName="${mod_name}"
 authors="${mod_authors}"
 description='''${mod_description}'''
 
+[[mixins]]
+config="expanded_steam_whistles.mixins.json"
+
 [[dependencies.${mod_id}]]
 modId="forge"
 mandatory=true
@@ -26,6 +29,13 @@ side="BOTH"
 [[dependencies.${mod_id}]]
 modId="create"
 mandatory=true
-versionRange="[6.0.0,)"
-ordering="NONE"
+versionRange="[6.0.0,6.1.0)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="pipeorgans"
+mandatory=false
+versionRange="[0.8.2+1.20.1,)"
+ordering="AFTER"
 side="BOTH"
