@@ -250,7 +250,7 @@ public class ExpandedSteamWhistleBlock extends Block implements IBE<ExpandedStea
         return false;
     }
 
-
+    /*
     public static Direction getAttachedDirection(BlockState state) {
         return state.getValue(WALL) ? state.getValue(FACING) : Direction.DOWN;
     }
