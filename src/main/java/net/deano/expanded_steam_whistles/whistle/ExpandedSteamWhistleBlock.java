@@ -1,14 +1,19 @@
 package net.deano.expanded_steam_whistles.whistle;
 
-
+import com.simibubi.create.content.decoration.steamWhistle.WhistleBlock;
+import net.deano.expanded_steam_whistles.init.AllBlockEntityTypes;
+import net.deano.expanded_steam_whistles.init.AllBlocks;
+import net.deano.expanded_steam_whistles.init.AllShapes;
+import net.deano.expanded_steam_whistles.compat.ModCompat;
+import net.deano.expanded_steam_whistles.compat.pipeorgans.PipeOrgansCompat;
+import net.deano.expanded_steam_whistles.compat.ModCompat;
+import net.deano.expanded_steam_whistles.compat.pipeorgans.PipeOrgansCompat;
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import com.simibubi.create.content.fluids.tank.FluidTankBlock;
 import com.simibubi.create.foundation.advancement.AdvancementBehaviour;
 import com.simibubi.create.foundation.block.IBE;
 import net.createmod.catnip.lang.Lang;
-import net.deano.expanded_steam_whistles.init.AllBlockEntityTypes;
-import net.deano.expanded_steam_whistles.init.AllBlocks;
-import net.deano.expanded_steam_whistles.init.AllShapes;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Direction.Axis;
@@ -81,7 +86,13 @@ public class ExpandedSteamWhistleBlock extends Block implements IBE<ExpandedStea
 
     @Override
     public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
-        return FluidTankBlock.isTank(pLevel.getBlockState(pPos.relative(getAttachedDirection(pState))));
+        Direction facing = WhistleBlock.getAttachedDirection(pState);
+        BlockState attached = pLevel.getBlockState(pPos.relative(facing));
+
+        if (ModCompat.PIPE_ORGANS && PipeOrgansCompat.isWindchest(attached))
+            return true;
+
+        return FluidTankBlock.isTank(pLevel.getBlockState(pPos.relative(WhistleBlock.getAttachedDirection(pState))));
     }
 
     @Override
@@ -186,7 +197,7 @@ public class ExpandedSteamWhistleBlock extends Block implements IBE<ExpandedStea
 
     @Override
     public void onPlace(BlockState pState, Level pLevel, BlockPos pPos, BlockState pOldState, boolean pIsMoving) {
-        FluidTankBlock.updateBoilerState(pState, pLevel, pPos.relative(getAttachedDirection(pState)));
+        FluidTankBlock.updateBoilerState(pState, pLevel, pPos.relative(WhistleBlock.getAttachedDirection(pState)));
         if (pOldState.getBlock() != this || pOldState.getValue(SIZE) != pState.getValue(SIZE))
             queuePitchUpdate(pLevel, pPos);
     }
@@ -194,7 +205,7 @@ public class ExpandedSteamWhistleBlock extends Block implements IBE<ExpandedStea
     @Override
     public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
         IBE.onRemove(pState, pLevel, pPos, pNewState);
-        FluidTankBlock.updateBoilerState(pState, pLevel, pPos.relative(getAttachedDirection(pState)));
+        FluidTankBlock.updateBoilerState(pState, pLevel, pPos.relative(WhistleBlock.getAttachedDirection(pState)));
     }
 
     @Override
@@ -211,7 +222,7 @@ public class ExpandedSteamWhistleBlock extends Block implements IBE<ExpandedStea
 
     public BlockState updateShape(BlockState pState, Direction pFacing, BlockState pFacingState, LevelAccessor pLevel,
                                   BlockPos pCurrentPos, BlockPos pFacingPos) {
-        return getAttachedDirection(pState) == pFacing && !pState.canSurvive(pLevel, pCurrentPos)
+        return WhistleBlock.getAttachedDirection(pState) == pFacing && !pState.canSurvive(pLevel, pCurrentPos)
                 ? Blocks.AIR.defaultBlockState()
                 : pState;
     }
@@ -243,7 +254,7 @@ public class ExpandedSteamWhistleBlock extends Block implements IBE<ExpandedStea
     public static Direction getAttachedDirection(BlockState state) {
         return state.getValue(WALL) ? state.getValue(FACING) : Direction.DOWN;
     }
-
+     */
     @Override
     public Class<ExpandedSteamWhistleBlockEntity> getBlockEntityClass() {
         return ExpandedSteamWhistleBlockEntity.class;

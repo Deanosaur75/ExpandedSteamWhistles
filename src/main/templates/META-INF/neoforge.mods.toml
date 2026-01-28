@@ -32,3 +32,10 @@ mandatory=true
 versionRange="[6.0.8,6.1.0)"
 ordering="AFTER"
 side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="pipeorgans"
+mandatory=false
+versionRange="[0.8.2+1.21,)"
+ordering="AFTER"
+side="BOTH"
