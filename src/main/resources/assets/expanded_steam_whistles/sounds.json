@@ -11,7 +11,10 @@
   "expanded_steam_whistle_high": {
     "subtitles": "sounds.expanded_steam_whistles.expanded_steam_whistle_high",
     "sounds": [
-      "expanded_steam_whistles:expanded_whistle_high"
+      {
+        "name":"expanded_steam_whistles:expanded_whistle_high",
+        "attenuation_distance": 64
+      }
     ]
   },
   "expanded_steam_whistle_medium": {
